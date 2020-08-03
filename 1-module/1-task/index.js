@@ -7,10 +7,10 @@ function factorial(n) {
   if (n === 0) {
     return 1;
   } else {
-    let m = 1;
+    let result = 1;
     for (let i = 1; i <= n; i++){
-    m *= i;
+    result *= i;
   }
-  return m;
+  return result;
 }
 }

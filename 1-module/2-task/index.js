@@ -11,8 +11,8 @@ function print(text) {
  */
 function isValid(name) {
   let space = name.includes(' ');
-  let l = name.length;
-  if (!!name && l >= 4 && !space) {
+  let nameLehgth = name.length;
+  if (!!name && nameLehgth >= 4 && !space) {
     return true;
   }
   return false;
