@@ -8,7 +8,7 @@ function highlight(table) {
     for (let trElement of trElements) {
         let tdElements = trElement.querySelectorAll('td');
         if (tdElements[1].innerHTML < 18) {
-           trElement.style.textDecoration = 'line-through';
+            trElement.style.textDecoration = 'line-through';
         }
         if (tdElements[2].innerHTML === 'm') {
             trElement.classList.add('male');
