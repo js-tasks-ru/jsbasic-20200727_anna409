@@ -1,33 +1,27 @@
 function initCarousel() {
   let container = document.body.querySelector('.container');
   container.addEventListener("click", click);
-  let counterRight = 1;
-  let counterLeft = 1;
   let carouselArrowRight = document.body.querySelector('.carousel__arrow_right');
   let carouselArrowLeft = document.body.querySelector('.carousel__arrow_left');
   let carouselInner = document.body.querySelector('.carousel__inner');
+  let slideWidth = carouselInner.offsetWidth;
+  let offset = 0;
   carouselArrowLeft.style.display = 'none';
 
   function click(event) {
     let target = event.target;
     if (target.closest('.carousel__arrow_right')) {
-      let offset = carouselInner.offsetWidth * counterRight;
-      carouselInner.style.transform = `translateX(-${offset}px)`;
-      counterRight++;
-      counterLeft--;
-      checkArrows(counterLeft, counterRight);
+      offset += slideWidth;
     }
     if (target.closest('.carousel__arrow_left')) {
-      let offset = carouselInner.offsetWidth * counterLeft;
-      carouselInner.style.transform = `translateX(${offset}px)`;
-      counterLeft++;
-      counterRight--;
-      checkArrows(counterLeft, counterRight);
+      offset -= slideWidth;
     }
+    carouselInner.style.transform = `translateX(-${offset}px)`;
+    checkArrows(offset);
   }
 
-  function checkArrows(counterLeft, counterRight) {
-    carouselArrowLeft.style.display = (counterLeft === 1 ? 'none' : '');
-    carouselArrowRight.style.display = (counterRight === 4 ? 'none' : '');
+  function checkArrows(offset) {
+    carouselArrowLeft.style.display = (offset === 0 ? 'none' : '');
+    carouselArrowRight.style.display = (offset === slideWidth * 3 ? 'none' : '');
   }
 }
