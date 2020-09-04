@@ -6,7 +6,6 @@ export default class Carousel {
     this.slidesCount = slides.length;
     this.elem = this.createCarousel(slides);
     this.offset = 0;
-    this.container = document.body.querySelector('.container');
     this.carouselArrowRight = this.elem.querySelector('.carousel__arrow_right');
     this.carouselArrowLeft = this.elem.querySelector('.carousel__arrow_left');
     this.carouselInner = this.elem.querySelector('.carousel__inner');
@@ -89,7 +88,7 @@ export default class Carousel {
 
   initCarousel() {
     this.carouselArrowLeft.style.display = 'none';
-    this.container.addEventListener("click", (event) => this.click(event));
+    this.elem.addEventListener("click", (event) => this.click(event));
   }
 
 click(event) {
