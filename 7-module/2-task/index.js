@@ -67,16 +67,15 @@ export default class Modal {
     if (modalWindow) {
       modalWindow.remove();
     }
+    document.removeEventListener('keydown', this.escapeEvent);
     document.body.classList.remove('is-modal-open');
   }
+
+  escapeEvent = (event) => {if (event.code === 'Escape') this.close()}
 
   initCloseEvent() {
     let closeButton = this.modal.querySelector('.modal__close');
     closeButton.addEventListener('click', this.close);
-    document.addEventListener('keydown', (event) => {
-      if (event.code === 'Escape') {
-        this.close();
-      }
-    });
+    document.addEventListener('keydown', this.escapeEvent);
   }
 }
